@@ -8,8 +8,12 @@ class LinksController < ApplicationController
   end
 
   def create
-    Link.create!(title: params[:link][:title], url: params[:link][:url])
+    @link = Link.new(title: params[:link][:title], url: params[:link][:url])
 
-    redirect_to root_path
+    if @link.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 end

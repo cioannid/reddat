@@ -1,3 +1,14 @@
+<% if @link.errors.any? %>
+  <div>
+    <h2><%= pluralize(@link.errors.count, "error") %> prohibited this record from being saved:</h2>
+      <ul>
+        <% @link.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
 <%= form_with model: @link do |link_form| %>
   <%= link_form.text_field :title %>
   <%= link_form.text_field :url %>
