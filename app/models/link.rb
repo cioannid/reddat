@@ -2,8 +2,8 @@ class Link < ApplicationRecord
   validates_presence_of :title
   validates_presence_of :url
 
-  def score
-    upvotes - downvotes
+  def self.hottest_first
+    order(Arel.sql('upvotes - downvotes DESC'))
   end
 
   def upvote
@@ -12,5 +12,9 @@ class Link < ApplicationRecord
 
   def downvote
     increment!(:downvotes)
+  end
+
+  def score
+    upvotes - downvotes
   end
 end
