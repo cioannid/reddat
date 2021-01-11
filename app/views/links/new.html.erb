@@ -1,0 +1,5 @@
+<%= form_with model: @link do |link_form| %>
+  <%= link_form.text_field :title %>
+  <%= link_form.text_field :url %>
+  <%= link_form.submit 'Submit!' %>
+<% end %>
