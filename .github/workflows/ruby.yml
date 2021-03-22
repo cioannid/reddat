@@ -31,5 +31,11 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.24.0
+    - name: Yarn install
+      run: yarn --frozen-lockfile
     - name: Run tests
       run: bundle exec rake
